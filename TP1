@@ -1,0 +1,93 @@
+Hobean BAE
+N'14500464
+
+Question 1
+
+reponse:
+
+[    0.000000] Memory: 23875832k/24414208k available (3434k kernel code, 448k absent, 537928k reserved, 3305k data, 580k init)
+--------------------------------------------------------
+
+
+D'après cat /proc/meminfo
+
+ MemFree:        13790004 kB
+---------------------------------
+
+Question 2
+reponse:
+
+/boot/grub
+/boot/grub/menu.lst
+/etc/alternatives/desktop-grub
+/opt/ltsp/i386/usr/share/vim/vim73/ftplugin/grub.vim
+/opt/ltsp/i386/usr/share/vim/vim73/syntax/grub.vim
+/usr/share/app-install/desktop/grub-choose-default.desktop
+/usr/share/desktop-base/grub_background.sh
+/usr/share/images/desktop-base/desktop-grub.png
+/usr/share/images/desktop-base/joy-grub.png
+/usr/share/images/desktop-base/moreblue-orbit-grub.png
+/usr/share/images/desktop-base/spacefun-grub-widescreen.png
+/usr/share/images/desktop-base/spacefun-grub.png
+/usr/share/vim/vim73/ftplugin/grub.vim
+/usr/share/vim/vim73/syntax/grub.vim
+/var/lib/dpkg/alternatives/desktop-grub
+--------------------------------------------------------------
+
+Dans le repertoire système de fichier(/boot/grub),
+le repertoire grub existe.
+Donc ce l'ordinateur demarre avec grub.
+
+Question 3
+reponse:
+
+Question 4
+reponse:
+on cherche le fichier de .profile
+on modifie par $ PATH=.:\$PATH
+
+
+Question 5
+reponse:
+
+b845548@langoustine:~/OS$ /bin/dash
+$ 
+-------------------------------------
+/bin/dash est equivalent à /bin/sh
+
+
+
+Question 6
+
+reponse:
+
+b845548@langoustine:~$ sleep 4 &
+[2] 28900
+b845548@langoustine:~$ gcc
+gcc: fatal error: no input files
+compilation terminated.
+b845548@langoustine:~$ gcc
+gcc: fatal error: no input files
+compilation terminated.
+[2]-  Fini                    sleep 4
+b845548@langoustine:~$ 
+
+J'ai tapé une commande 'sleep 4' avec &(and)
+apres j'ai tapé 2 commande de 'gcc'
+et puis on vois les commandes de 'gcc' avant d'apparaitre 'Fini' de premier comm ande
+
+
+
+
+Question 7
+reponse:
+
+
+variable=$*
+
+echo programme lance avec $# element
+
+for i in $#; do echo argument $(i) :  ${variable[i]}; done
+
+
+

@@ -1,0 +1,80 @@
+SYSTEM TD5
+BAE HOBEAN
+14500464
+
+
+Q1:
+---------------------------------------------
+#include<stdio.h>
+
+int main(){
+
+  FILE * F;
+  int i;
+  F=fopen("data.txt","w");
+  for(i=0; i< 1048576; i++){
+    fprintf(F,"0123456789");
+      }
+  fclose(F);
+}
+---------------------------------------------
+for repete 1048576 fois 'fprintf' avec 10 chaine de caracteres 
+1048576*10 = 10485760 (10 mega octet)
+
+
+Q2:
+---------------------------------------------------------------------
+#include <stdio.h>
+#include <time.h>
+
+int main(){
+int c;
+ float tavant,tapres;
+ float res;
+ FILE * F, * FCPY; 
+clock_t t;
+ F= fopen("data.txt","r"); 
+ FCPY= fopen("datacpy.txt","w"); 
+ t=clock();
+ while((c =fgetc(F))!= EOF){
+   fputc(c,FCPY);
+ }
+t = clock() - t;
+
+ printf("le temps %f\n",((float)t)/CLOCKS_PER_SEC);
+ fclose(F);
+ fclose(FCPY);
+return 0;
+}
+
+-----------------------------------------------------------------
+b845548@langoustine:~$ gcc data2.c 
+b845548@langoustine:~$ time ./a.out 
+le temps 0.020000
+
+real	0m0.052s
+user	0m0.020s
+sys	0m0.016s
+--------------------------------------------------------------------
+
+avant de commancer on mesure le temps
+et apres l'execution on mesure le temps
+on fait le calcul apres(clock()) - avant(t)
+
+le temps que j'ai obtenu 0.020000 sec avec le programme c
+avec la commande time, j'ai obtenu cela
+
+
+
+Q2:
+----------------------------------------------------
+b845548@langoustine:~$ time cat data.txt > datacpy.txt
+
+real	0m0.032s
+user	0m0.000s
+sys	0m0.004s
+----------------------------------------------------
+
+Q3:
+
+

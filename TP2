@@ -1,0 +1,108 @@
+System d'Exploitation
+
+Hobean BAE
+14500464
+
+Reponse 3.1
+J'ai lancé 1000 fois plus, l'ordinateur fonctionne tres lentement
+après avoir executer killall de tous les processus, l'ordinanteur marche encore lentement 
+
+Reponse 3.3
+----------------------------------
+b845548@langoustine:~$ sleep 60
+^C
+b845548@langoustine:~$ echo $?
+130
+b845548@langoustine:~$ sleep 60
+^\Quitter
+b845548@langoustine:~$ echo $?
+131
+----------------------------------
+C-C = 130
+C-\ = 131
+
+
+Reponse 3.8
+
+-----------------------------------------------------------
+#include<stdio.h>
+#include<unistd.h>
+#include<sys/wait.h>
+
+int main(){
+
+  int P,PP;
+  P = fork(); // Creer <Enfant> par <Parent>
+
+if(P == -1){// Test erreur de <Enfant>
+    printf("error");
+    return 1;
+  }
+
+  if(P == 0){// <Enfant>
+    PP = fork();// Creer <Petit enfant> par <Enfant>
+    sleep(20);// attend 20 second
+    wait(NULL);// <Enfant> attends la fin de <Petit enfant>
+    return 0;
+  }
+
+  if(PP == -1){ // Test erreur de <Petit enfant>
+    printf("erreur");
+    return 1;
+  }
+
+  if(PP == 0){// <Petit enfant>
+    sleep(10);// attendre 10 second
+    return 0;
+  }
+
+  if(P > 0){ // <Parent>
+    wait(NULL);// parent attends la fin de <Enfant>
+  }
+
+  return 0;
+} 
+------------------------------------------------------------
+
+
+Reponse 3.9
+
+----------------------
+real	1m45.712s
+user	0m0.376s
+sys	0m29.106s
+----------------------
+
+Reponse 3.11
+
+-----------------------------------------------------------------------
+#include<stdio.h>
+#include<unistd.h>
+#include<string.h>
+
+int spwan(char * fichier, char * commande, char * argument){
+  int nombre;
+  char * arg;
+  arg = strtok (argument," ,.-");
+  while (arg != NULL){
+    execl(fichier,commande,arg,(void *)0);
+    arg= strtok(NULL, " ,.-");
+    nombre++;
+  }
+  printf("le programme a été lancé avec %d arguments\n",nombre);
+  return 0;
+}
+----------------------------------------------------------------------
+
+
+
+
+
+Reponse 3.16
+--------------------------------------------
+b845548@langoustine:~$ sh
+$ printenv | grep LOGNAME
+LOGNAME=b845548
+$ unexport LOGNAME printenv | grep LOGNAME
+sh: 2: unexport: not found
+-------------------------------------------

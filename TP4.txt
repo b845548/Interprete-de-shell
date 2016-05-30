@@ -1,0 +1,96 @@
+System d'exploitation 
+Le 10 nov 
+TD 4
+
+BAE Hobean 
+N'14500464
+Q1
+------------------------------------
+b845548@langoustine:~$ ls -l toto.txt
+-rw-r--r-- 2 b845548 nogroup 33 nov.  10 11:38 toto.txt
+------------------------------------
+Dans la commande ls avec l'option -l, just apres de 'nogroup'
+il y a 33 qui indique le nombre d'octets de le fichier toto.txt
+
+
+Q2
+-----------------------------
+b845548@langoustine:~$ ls -i
+...
+8653476 toto.txt
+...
+-----------------------------
+la commande ls avec l'option -i affiche la liste de fichier avec le numero d'inode de chaque fichier
+
+Q3
+-----------------------------------------------
+b845548@langoustine:~$ ln toto.txt tata.txt
+b845548@langoustine:~$ cat tata.txt
+Bonjour, je suis le fichier toto
+----------------------------------------------
+la commande ln et les arguments toto.txt tata.txt cree un nouveau fichier tata.txt.
+le contenu de tata.txt est le meme que celui de toto.txt
+
+Q4
+----------------------------------------------
+b845548@langoustine:~$ ls -i
+...
+8653476 tata.txt
+...
+8653476 toto.txt
+...
+----------------------------------------------
+le numero d'inode est identique.
+
+Q5
+--------------------------------------------------------------------------
+b845548@langoustine:~$ echo >> toto.txt Je contiens maintenant deux ligne
+b845548@langoustine:~$ cat toto.txt
+Bonjour, je suis le fichier toto
+Je contiens maintenant deux ligne
+--------------------------------------------------------------------------
+toto.txt contient une ligne qu'on a tapé,quand on l'a creé
+et une autre ligne qu'on a jouté avec 'echo >>'
+
+
+
+Q6
+----------------------------------------
+b845548@langoustine:~$ cat tata.txt
+Bonjour, je suis le fichier toto
+Je contiens maintenant deux ligne
+----------------------------------------
+tata.txt contient le meme contenu que toto.txt,
+pourtant on n'a pas modifie tata.txt.
+
+
+Q7
+----------------------------------------------
+b845548@langoustine:~$ ls -i
+...
+8653476 tata.txt
+...
+8653476 toto.txt
+...
+----------------------------------------------
+le numero d'inode est identique.
+
+
+Q8
+----------------------------------------------
+b845548@langoustine:~$ rm toto.txt
+b845548@langoustine:~$ ls -i
+...
+8653476 tata.txt
+...
+----------------------------------------------
+meme si on a supprime toto.txt, tata.txt existe.
+
+Q9
+-----------------------------------------------------------------------------
+b845548@langoustine:~$ for i in $(seq 100000);do ln toto.txt toto$i.txt; done
+
+----------------------------------------------------------------------------
+On cree 100000 fichier.
+Dernier fichier qu'on a cree est toto64999.txt
+Donc 65000 est le maximum 
